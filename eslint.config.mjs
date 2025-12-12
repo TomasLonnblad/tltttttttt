@@ -1,4 +1,13 @@
-// @ts-check
-import { configs } from '@repo/eslint-config/react-package';
+import { FlatCompat } from "@eslint/eslintrc";
 
-export default configs;
+const compat = new FlatCompat({
+  baseDirectory: import.meta.dirname,
+});
+
+const eslintConfig = [
+  ...compat.config({
+    extends: ["next/core-web-vitals", "next/typescript"],
+  }),
+];
+
+export default eslintConfig;
